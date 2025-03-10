@@ -2,138 +2,97 @@
 
 ```mermaid
 classDiagram
-	class Media {
-		file_path: String
-		type: MediaType
+	class Collection {
 		title: String
-		original_title: String
 		summary: String
-		datetime_added: DateTime
+		release_date: Date
+		is_boxed_set: bool
+		is_compilation: bool
+		is_airing: bool
 	}
-	Media o-- MediaType
+	Collection *--"*" Subcollection: subcollections
+
+	class Subcollection {
+		order: u16
+	}
+	Subcollection o-- Subcollectiontype: type
+	Subcollection o--"*" SubcollectionMember: members
+
+	class SubcollectionMember {
+		order: u16
+	}
+	SubcollectionMember o-- Media
+
+	class Subcollectiontype {
+		<<enum>>
+		Default
+		Season
+		Specials
+		Extras
+	}
+
+	class Media {
+		title: String
+		release_date: Date
+		first_airing_date: Date
+		last_airing_date: Date
+		user_rating: u8
+		summary: String
+	}
 	Media o--"*" Genre: genres
-	Media o--"*" Person: producers
-	Media o--"*" Person: writers
-	Media o--"*" Person: credits
-	Media o-- MediaMetadataSource
+	Media o--"*" Style: styles
 	Media o--"*" Tag: tags
+	Media o--"*" Theme: themes
+	Media o-- Studio: publisher
+	Media *--"*" Credit: credits
+	Media o--"*" MediaMetadataSource: sources
+	Media *--"*" String: alternate_titles
+	Media o-- Country: country_of_origin
+	Media o-- Media: related_media
 
-	class MediaMetadataSource {
-		metadata_source: MetadataSource
-		source_id: String
+	class Credit {
+		role: String
 	}
+	Credit o-- Group: group
+	Credit o-- Person: person
 
-	class Audio {
-		length: f16
-		release_date: Date	
-	}
-	Audio o--"*" Person: artists
-
-	class Video {
-		trailer: Url
-		runtime: u16
-	}
-	Video o--"*" Character: characters
-
-	class Movie {
-		mpaa_rating: MPAARating
-		mpaa_description: String
-		premier_date: Date
-		release_date: Date	
-	}
-	Movie --|> Video
-	Movie o-- MPAARating
-
-	class Episode {
-		season: u8
-		episode: u8
-		first_aired_date: Date
-		last_aired_date: Date
-	}
-	Episode --|> Video
-
-	class Art {
-		art_type: ArtTypy
-		url: Url
-		file_path: String
-	}
-
-	class ArtType {
-		<<enum>>
-		Poster
-		Fan
-		Thumbnail
-		Other
-	}
-
-	class Tag {
+	class Group {
 		name: String
+		formed_date: Date
+		dissolved_date: Date
+		biography: String
 	}
-
-	class Studio {
-		name: String
-	}
-
-	class MPAARating {
-		<<enum>>
-		G_GeneralAudiences
-		PG_ParentalGuidanceSuggested
-		PG13_ParentsStronglyCautioned
-		R_Restricted
-		NC17_AdultsOnly
-		NR_NotRated
-	}
-
-	class Artist {
-		instrument: Instrument
-		artist: Person
-	}
-	Artist o-- Instrument
-	Artist o-- Person
-
-	class Instrument {
-		name: String
-	}
-
-	class Character {
-		name: String
-	}
-	Character o--"*" Cast
-
-	class Cast {
-		language: Language
-		actor: Person
-	}
-	Cast o-- Language
-	Cast o-- Person
-
-	class Language {
-		name: String
-	}
+	Group o--"*" Person: members
+	Group o--"*" Genre: genres
+	Group o--"*" Style: styles
+	Group o--"*" Tag: tags
 
 	class Person {
 		name: String
-		image_file: String
+		birth_date: Date
+		death_date: Date
+		biography: String
 	}
-
-	class Genre {
-		name: String
-		description: String
-	}
-
-	class MediaType {
-		<<enum>>
-		Audio_Music
-		Audio_Podcast
-		Audio_Book
-		Audio_Other
-		Video_TVEpisode
-		Video_WebEpisode
-		Video_Movie
-		Video_Other
-	}
+	Person o-- Gender: gender
 
 	class MetadataSource {
+		name: String
 		url: Url
+		access_id: String
+		access_token: String
+	}
+
+	class MediaMetadataSource {
+		source_media_id: String
+	}
+	MediaMetadataSource o-- MetadataSource: source
+
+	class Gender {
+		<<enum>>
+		Male
+		Female
+		Fluid
+		NonBinary
+		Other
 	}
 ```
