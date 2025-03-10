@@ -1,0 +1,6 @@
+{
+	"$schema": "./schemas/configuration.schema.json",
+	"logs": {
+		"root": "DEBUG"
+	}
+}

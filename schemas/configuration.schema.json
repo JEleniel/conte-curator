@@ -1,0 +1,54 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"$id": "https://turkeyofman.com/config.schema.json",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"type": "string"
+		},
+		"logs": {
+			"type": "object",
+			"properties": {
+				"path": {
+					"type": "string",
+					"default": "logs/"
+				},
+				"root": {
+					"$ref": "#/$defs/log_level",
+					"default": "WARN"
+				},
+				"targets": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"level": {
+								"$ref": "#/$defs/log_level"
+							},
+							"target": {
+								"type": "string"
+							}
+						},
+						"required": ["target", "level"],
+						"additionalProperties": false
+					},
+					"additionalItems": false,
+					"minItems": 1
+				}
+			},
+			"minProperties": 1,
+			"additionalProperties": false
+		},
+		"output_path": {
+			"type": "string",
+			"default": "out/"
+		}
+	},
+	"required": ["$schema"],
+	"additionalProperties": false,
+	"$defs": {
+		"log_level": {
+			"enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR"]
+		}
+	}
+}
