@@ -1,10 +1,166 @@
+# Project specific
 .DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
-.env
-.env.*
+.flutter-plugins
+.flutter-plugins-dependencies
+*.class
+*.log
+*.pyc
+*.swp
+**/.atom/
+**/.build/
+**/.buildlog/
+**/.dart_tool/
+**/.history
+**/.pub-cache/
+**/.pub/
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+**/build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+**/migrate_working_dir/
+app.*.map.json
+app.*.symbols
+
+# Visual Studio Code
+.vscode-test
+*.vsix
+**/.history/
+**/.vscode/*
+!**/.vscode/*.code-snippets
+!**/.vscode/extensions.json
+!**/.vscode/launch.json
+!**/.vscode/settings.*.json
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+
+# Archive Files
+*.7z
+*.bz2
+*.bzip
+*.bzip2
+*.cab
+*.deb
+*.dmg
+*.egg
+*.gem
+*.gz
+*.gzip
+*.iso
+*.jar
+*.lzma
+*.msi
+*.msix
+*.msm
+*.msp
+*.rar
+*.rpm
+*.tar
+*.tgz
+*.txz
+*.tzst
+*.xar
+*.xpi
+*.xz
+*.zip
+*.zst
+
+# Backup Files
+*.bak
+*.gho
+*.ori
+*.orig
+
+# Diff Files
+*.diff
+*.patch
+
+# .env Files
+.env*
 !.env.example
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+
+# Linux Files
+.directory
+.fuse_hidden*
+.nfs*
+.Trash-*
+*~
+
+# Windows Files
+[Dd]esktop.ini
+*.lnk
+*.stackdump
+$RECYCLE.BIN/
+ehthumbs_vista.db
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+
+# MacOS Files
+._*
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.com.apple.timemachine.donotpresent
+.DocumentRevisions-V100
+.fseventsd
+.LSOverride
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+Icon
+Network Trash Folder
+Temporary Items
+
+# Temporary Files
+.temp
+*.rej
+*.tmp
+**/temp/
+**/tmp/
+
+# Security Files
+*.jks
+*.key
+*.keystore
+*.pem
+
+# Logs
+logs
+*-debug.log*
+*-error.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+*.pid
+*.pid.lock
+*.seed
+pids
+
+# Intermediate, Coverage, and Output Files
+.docusaurus
+.grunt
+.next
+.nuxt
+.nyc_output
+*.lcov
+*.tsbuildinfo
+**/.serverless/
+**/.vitepress
+**/coverage/
+**/dist/
+**/target/
+out
+
+# Cache and Dependency Files
+.cache
+.eslintcache
+.stylelintcache
+**/.cache/
+**/.dynamodb/
+**/.fusebox/

@@ -1,0 +1,20 @@
+name: conte_curator
+description: 'A flexible, cross platform way to manage and enjoy all your media'
+publish_to: 'none'
+version: 0.1.0-alpha.1
+repository: https://github.com/JEleniel/conte-curator
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
